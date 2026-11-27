@@ -1,3 +1,7 @@
+# ==========================================================
+#  KETHERBAR - YASB theme
+#  Designed & built by Kenzzy (Krishna Upadhyay)
+# ==========================================================
 watch_stylesheet: true
 watch_config: true
 debug: false
@@ -8,21 +12,20 @@ komorebi:
 bars:
   status-bar:
     enabled: true
-    screens: ['*'] 
+    screens: ['*']
     class_name: "yasb-bar"
     alignment:
       position: "top"
-      center: false
     blur_effect:
-      enabled: true 
-      acrylic: true
+      enabled: true
       dark_mode: true
       round_corners: false
-      border_color: solid rgba(255, 255, 255, 0.1);
+      border_color: "System"
     window_flags:
       always_on_top: true
       windows_app_bar: true
       hide_on_fullscreen: true
+      auto_hide: false
     dimensions:
       width: "100%"
       height: 25
@@ -30,11 +33,11 @@ bars:
       left:
         [
           "home",
+          #"active_window",
           "apps"
-          #"active_window"
-        ] 
+        ]
       center: [
-         #"clock","weather"
+         #"clock", "weather"
         ]
       right:
         [
@@ -42,8 +45,8 @@ bars:
           "quick_launch",
           "media",
           "microphone",
-         #"volume",
-         #"brightness",
+          #"volume",
+          #"brightness",
           "wifi",
           "bluetooth",
           "battery",
@@ -62,8 +65,8 @@ widgets:
       label_alt: "<span>{icon}</span> {level}"
       mute_text: "mute"
       icons:
-        normal: "\uf130"
-        muted: "\uf131"
+        normal: "\ued03"
+        muted: "\uefc6"
       mic_menu:
         blur: true
         round_corners: true
@@ -75,11 +78,6 @@ widgets:
         on_left: "toggle_mute"
         on_middle: "toggle_label"
         on_right: "toggle_mic_menu"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [ 1, 1 ]
   media:
     type: "yasb.media.MediaWidget"
     options:
@@ -98,11 +96,9 @@ widgets:
       thumbnail_corner_radius: 0
       hide_empty: true
       callbacks:
-        # Current YASB callbacks: left toggles playback, right opens the source picker/flyout.
-        # Original interaction restored: left-click play/pause, right-click flyout.
+        # Left-click toggles playback, right-click opens the media flyout.
         on_left: "toggle_play_pause"
         on_middle: "do_nothing"
-        # Current YASB callback required to open the media flyout.
         on_right: "toggle_media_menu"
       icons:
         prev_track: "\ue892"
@@ -110,7 +106,6 @@ widgets:
         play: "\uf01d"
         pause: "\uf28c"
       media_menu:
-        # Match every interactive flyout with the WindowsGlass-friendly material.
         blur: true
         round_corners: true
         round_corners_type: "normal"
@@ -141,19 +136,14 @@ widgets:
         ease_slope: 20
         ease_pos: 0.8
         ease_min: 0.5
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [ 1, 1 ]
   active_window:
     type: "yasb.active_window.ActiveWindowWidget"
     options:
-      label: "{win[title]}"
-      label_alt: "[class_name='{win[class_name]}' exe='{win[process][name]}' hwnd={win[hwnd]}]"
+      label: "{win[app_name]}"
+      label_alt: "{win[app_name]}  ·  {win[title]}"
       label_no_window: ""
-      label_icon: true
-      label_icon_size: 14
+      label_icon: false
+      label_icon_size: 0
       max_length: 56
       max_length_ellipsis: "..."
       monitor_exclusive: true
@@ -163,14 +153,13 @@ widgets:
       tooltip: false
       label: "{%a  %d  %b,  %y     %H:%M:%S}"
       label_alt: "{%A %d %B %Y, %H:%M}"
-      #locale: 'en_EN' # Langugae for date, you can set your own, example fr_FR
-      timezones: [] #Looking up time zone info from registry
-      #timezones: ["America/Montreal"]
+      #locale: 'en_EN' # Language for date, e.g. fr_FR
+      timezones: [] # Looks up time zone info from the registry
       callbacks:
         on_right: "exec cmd.exe /c start ms-clock:"
-      calendar: 
-        blur: True
-        round_corners: True
+      calendar:
+        blur: true
+        round_corners: true
         round_corners_type: "normal"
         border_color: "System"
         alignment: "center"
@@ -178,13 +167,14 @@ widgets:
   weather:
     type: "yasb.weather.WeatherWidget"
     options:
+      tooltip: false
       label: "<span>{icon}</span> {temp}"
       label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
-      api_key: '3bf4cf9a7c3f40d6b31174128242807' # Get your free API key from https://www.weatherapi.com/
-      update_interval: 600 # Update interval in seconds, Min 600 seconds
+      api_key: 'f60da6fb103441f094891203260111' # Free key from https://www.weatherapi.com/
+      update_interval: 600 # Seconds, minimum 600
       hide_decimal: true
-      location: 'Delhi,India' # You can use "USA Los Angeles 90006" {COUNTRY CITY ZIP_CODE}, or just city.
-      icons: 
+      location: 'India Ghaziabad 201013' # Format: "COUNTRY CITY ZIP_CODE", or just a city
+      icons:
         sunnyDay: "\ue30d"
         clearNight: "\ue32b"
         cloudyDay: "\udb81\udd99"
@@ -198,28 +188,25 @@ widgets:
     options:
       label: "{icon}"
       label_alt: "{volume}"
-      volume_icons:
-        - "\ueee8"  # Icon for muted
-        - "\uf026"  # Icon for 0-10% volume
-        - "\uf027"  # Icon for 11-30% volume
-        - "\uf027"  # Icon for 31-60% volume
-        - "\uf028"  # Icon for 61-100% volume
+      icons:
+        muted: "\ueee8"
+        low: "\uf026"
+        medium: "\uf027"
+        high: "\uf028"
       callbacks:
         on_right: "exec cmd.exe /c start ms-settings:sound"
       audio_menu:
         blur: true
         round_corners: true
-        round_corners_type: 'normal'
-        border_color: 'System'
-        alignment: 'center'
-        direction: 'down'
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "center"
+        direction: "down"
   brightness:
     type: "yasb.brightness.BrightnessWidget"
     options:
       label: "<span>{icon}</span>"
-      #label_alt: "Brightness {percent}%"
       tooltip: true
-      hide_unsupported: true
       brightness_toggle_level: [0, 50, 100]
       auto_light: false
       auto_light_icon: "\udb80\udce1"
@@ -228,10 +215,10 @@ widgets:
       auto_light_night_end_time: "06:45"
       auto_light_day_level: 75
       brightness_icons: [
-        "\udb80\udcde",  # Icon for 0-25% brightness
-        "\udb80\udcdd",  # Icon for 26-50% brightness
-        "\udb80\udcdf",  # Icon for 51-75% brightness
-        "\udb80\udce0"   # Icon for 76-100% brightness
+        "\udb80\udcde",  # 0-25% brightness
+        "\udb80\udcdd",  # 26-50% brightness
+        "\udb80\udcdf",  # 51-75% brightness
+        "\udb80\udce0"   # 76-100% brightness
       ]
       brightness_menu:
         blur: true
@@ -241,39 +228,29 @@ widgets:
         alignment: "right"
         direction: "down"
       callbacks:
-          on_right: "exec cmd.exe /c start ms-settings:system"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [ 1, 1 ]
+        on_right: "exec cmd.exe /c start ms-settings:system"
   power_menu:
     type: "yasb.power_menu.PowerMenuWidget"
     options:
       label: "\uf011"
-      uptime: True
-      blur: False
-      blur_background: True
-      animation_duration: 300 # Milisecond 
-      button_row: 3 # Number of buttons in row, min 1 max 5
+      uptime: true
+      blur: false
+      blur_background: true
+      animation_duration: 300 # Milliseconds
+      button_row: 3 # Buttons per row, min 1 max 5
       buttons:
-        lock: ["\uea75","Lock"]
-        signout: ["\udb80\udf43","Sign out"]
-        shutdown: ["\uf011","Shut Down"]
-        restart: ["\uead2","Restart"]
-        hibernate: ["\uf28e","Hibernate"]
-        cancel: ["\udb81\udf3a","Cancel"]
+        lock: ["\uea75", "Lock"]
+        signout: ["\udb80\udf43", "Sign out"]
+        shutdown: ["\uf011", "Shut Down"]
+        restart: ["\uead2", "Restart"]
+        hibernate: ["\uf28e", "Hibernate"]
+        cancel: ["\udb81\udf3a", "Cancel"]
   settings:
     type: "yasb.applications.ApplicationsWidget"
     options:
       label: "{data}"
       app_list:
         - {icon: "\ue690", launch: "quick_settings"}
-      container_padding: 
-        top: 0
-        left: 0
-        bottom: 0
-        right: 0
   win_button:
     type: "yasb.custom.CustomWidget"
     options:
@@ -283,36 +260,31 @@ widgets:
       callbacks:
         on_left: "exec start_menu"
   traffic:
-      type: "yasb.traffic.TrafficWidget"
-      options:
-        label: "<span>\udb86\uddb3</span>{download_speed}<span class=\"tr_sep\">\ue621</span><span>\udb86\uddb2</span>{upload_speed}"
-        label_alt: "Download {download_speed} \ue621 Upload {upload_speed}"
-        update_interval: 1000 # Update interval should be a multiple of 1000
-        callbacks:
-          on_left: "toggle_label"
-          on_right: "exec cmd /c Taskmgr"
+    type: "yasb.traffic.TrafficWidget"
+    options:
+      label: "<span>\udb86\uddb3</span>{download_speed}<span class=\"tr_sep\">\ue621</span><span>\udb86\uddb2</span>{upload_speed}"
+      label_alt: "Download {download_speed} \ue621 Upload {upload_speed}"
+      update_interval: 1000 # Must be a multiple of 1000
+      callbacks:
+        on_left: "toggle_label"
+        on_right: "exec cmd /c Taskmgr"
   home:
     type: "yasb.home.HomeWidget"
     options:
-      label: "\ued04"
+      label: "\ue8e5"
       menu_list:
-      - { title: "Control Panel", path: "C:\\Users\\crazz\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\System Tools\\Control Panel.lnk" }
-      - { title: "User Home", path: "~" }
-      - { title: "Download", path: "~\\Downloads" }
-      - { title: "Documents", path: "~\\Documents" }
-     # - { title: "Pictures", path: "~\\Pictures" }
-      - { title: "Kernel (C)", path: "C:\\" }
-      - { title: "Kioku (D)", path: "D:\\" }
+        - { title: "Control Panel", path: "C:\\Users\\crazz\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\System Tools\\Control Panel.lnk" }
+        - { title: "User Home", path: "~" }
+        - { title: "Download", path: "~\\Downloads" }
+        - { title: "Documents", path: "~\\Documents" }
+        - { title: "Pictures", path: "~\\Pictures" }
+        - { title: "Kernel (C)", path: "C:\\" }
+        - { title: "Kioku (D)", path: "D:\\" }
       system_menu: true
       power_menu: true
       blur: true
       border_color: "System"
       round_corners_type: "normal"
-      container_padding:
-        top: 0
-        left: 6
-        bottom: 0
-        right: 12
   apps:
     type: "yasb.applications.ApplicationsWidget"
     options:
@@ -329,8 +301,8 @@ widgets:
       label: "<span>{icon}</span> {percent}%"
       label_alt: "<span>{icon}</span> {percent}% | {power}W | {time_remaining}"
       update_interval: 1000
-      time_remaining_natural: False
-      hide_unsupported: True
+      time_remaining_natural: false
+      hide_unsupported: true
       charging_options:
         icon_format: "{charging_icon}"
         blink_charging_icon: true
@@ -348,15 +320,10 @@ widgets:
         icon_medium: "\uf242"
         icon_high: "\uf241"
         icon_full: "\uf240"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [ 1, 1 ]
       callbacks:
-        on_left: 'do_nothing' 
-        on_middle: 'do_nothing'
-        on_right: 'do_nothing'
+        on_left: "do_nothing"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"
   wifi:
     type: "yasb.wifi.WifiWidget"
     options:
@@ -368,34 +335,35 @@ widgets:
         on_middle: "do_nothing"
         on_right: "exec cmd.exe /c start ms-settings:network"
       wifi_icons: [
-        "\udb82\udd2e",  # Icon for 0% strength
-        "\udb82\udd1f",  # Icon for 1-20% strength
-        "\udb82\udd22",  # Icon for 21-40% strength
-        "\udb82\udd25",  # Icon for 41-80% strength
-        "\uf1eb"   # Icon for 81-100% strength
+        "\udb82\udd2e",  # 0% strength
+        "\udb82\udd1f",  # 1-20% strength
+        "\udb82\udd22",  # 21-40% strength
+        "\udb82\udd25",  # 41-80% strength
+        "\uf1eb"         # 81-100% strength
       ]
   bluetooth:
     type: "yasb.bluetooth.BluetoothWidget"
     options:
-      label: "<span>{icon}</span>" # Shows icon & count
-      label_alt: "{device_name}" # Shows connected device name
+      label: "<span>{icon}</span>"
+      label_alt: "{device_name}"
       label_no_device: "No devices"
       icons:
-        bluetooth_on: "\uf293" # Example icon (Unicode)
-        bluetooth_connected: "\udb80\udcb1" # Example icon
+        bluetooth_on: "\udb80\udcaf"
+        bluetooth_connected: "\udb80\udcb1"
+        bluetooth_off: "\uf293"
       callbacks:
         on_left: "exec quick_settings"
         on_middle: "do_nothing"
-        on_right: "exec cmd.exe /c start ms-settings:bluetooth" # Open BT settings on right-click
+        on_right: "exec cmd.exe /c start ms-settings:bluetooth"
   systray:
     type: "yasb.systray.SystrayWidget"
     options:
       class_name: "systray"
       label_collapsed: "\udb81\udeb6"
       label_expanded: "\udb82\ude03"
-      label_position: "left" # Can be "left" or "right"
-      icon_size: 15 # Can be any integer between 8 and 64
-      pin_click_modifier: "alt" # Can be "ctrl", "alt" or "shift"
+      label_position: "left" # "left" or "right"
+      icon_size: 15 # Integer between 8 and 64
+      pin_click_modifier: "alt" # "ctrl", "alt" or "shift"
       show_unpinned: false
   notifications:
     type: "yasb.notifications.NotificationsWidget"
@@ -424,111 +392,29 @@ widgets:
           show_recent: false
           max_recent: 5
           show_description: true
-       # bookmarks:
-       #   enabled: true
-       #   prefix: "*"
-       #   priority: 1
-       #   browser: "all"
-       #   profile: "Default"
         calculator:
           enabled: true
           prefix: " "
           priority: 3
-       # clipboard_history:
-       #   enabled: true
-       #   prefix: "cb"
-       #   priority: 3
-       #   max_items: 30
-       # color:
-       #   enabled: true
-       #   prefix: "c:"
-       #   priority: 4
-       # currency:
-       #   enabled: true
-       #   prefix: "$"
-       #   priority: 5
         dev_tools:
           enabled: true
           prefix: "dev"
           priority: 6
-       # emoji:
-       #   enabled: true
-       #   prefix: ":"
-       #   priority: 7
         file_search:
           enabled: true
           prefix: ""
           priority: 1
           backend: "auto"
           show_path: true
-       # github_notifications:
-       #   enabled: true
-       #   prefix: "gh"
-       #   priority: 9
-       #   token: "env"
-       # hacker_news:
-       #   enabled: true
-       #   prefix: "hn"
-       #   priority: 10
-       #   cache_ttl: 300
-       #   max_items: 30
-       # ip_info:
-       #   enabled: true
-       #   prefix: "ip"
-        #  priority: 11
-       # kill_process:
-       #   enabled: true
-       #   prefix: "!"
-       #   priority: 12
-       # port_viewer:
-       #   enabled: true
-       #   prefix: "pv"
-       #   priority: 13
-       #   tcp_listening_only: true
-       #   include_established: false
         settings:
           enabled: true
           prefix: ""
           priority: 2
-       # snippets:
-       #   enabled: true
-       #   prefix: ";"
-       #   priority: 15
-       #   type_delay: 200
-       # system_commands:
-       #   enabled: true
-       #   prefix: ">"
-       #   priority: 16
-       # unit_converter:
-       #   enabled: true
-       #   prefix: "~"
-       #   priority: 17
-       # vscode:
-       #   enabled: true
-       #   prefix: "vsc"
-       #   priority: 18
         web_search:
           enabled: true
           prefix: "?"
           priority: 4
           engine: "google"
-       # window_switcher:
-       #   enabled: true
-       #   prefix: "win"
-       #   priority: 20
-       # windows_terminal:
-       #   enabled: true
-       #   prefix: "wt"
-       #   priority: 21
-       # world_clock:
-       #   enabled: true
-       #   prefix: "tz"
-       #   priority: 22
-       # wsl:
-       #   enabled: true
-       #   prefix: "wsl"
-       #   priority: 23
-       #   show_online: true
       popup:
         width: 720
         height: 420
@@ -537,10 +423,6 @@ widgets:
         round_corners_type: "normal"
         border_color: "none"
         dark_mode: true
-      animation:
-        enabled: true
-        type: "fadeInOut"
-        duration: 200
       callbacks:
         on_left: "toggle_quick_launch"
       keybindings:

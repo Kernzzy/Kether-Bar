@@ -1,3 +1,8 @@
+/* ==========================================================
+   KETHERBAR - YASB theme
+   Designed & built by Kenzzy (Krishna Upadhyay)
+   ========================================================== */
+
 * {
 	font-size: 14px;
 	color: #ffffff;
@@ -38,7 +43,16 @@
 	color: #fff;
 }
 .active-window-widget .icon {
+    font-weight: 700;
+	font-size: 15px;
+	margin: 0 2px;
     padding: 0 0 0 0;
+}
+.active-widget .label {
+	font-weight: 700;
+	font-size: 15px;
+	padding:0px 2px 1px 2px;
+	margin: 0 8px;
 }
 /*POWER MENU WIDGET*/
 .uptime {
@@ -469,7 +483,7 @@ Example: "Windows Media" becomes "windows-media" */
     font-weight: 600;
 }
 .home-menu .menu-item:hover {
-    background-color: rgba(157, 180, 141, 0.116);
+    background-color: rgba(157, 180, 141, 0);
     color: #fff;
 }
 .home-menu .separator {
@@ -800,7 +814,7 @@ QToolTip {
 
 .widget:hover,
 .systray .button:hover {
-    background-color: rgba(255, 255, 255, 0.09);
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .icon,
@@ -1014,7 +1028,7 @@ QToolTip {
 
 .media-widget .label:hover,
 .media-widget:hover {
-    background-color: rgba(255, 255, 255, 0.14);
+    background-color: rgba(255, 255, 255, 0);
 }
 
 /* Make the Control Center flyout visibly translucent; blur is enabled in YAML. */
@@ -1042,7 +1056,7 @@ QToolTip {
 }
 
 .apps-widget .label:hover {
-    background-color: rgba(255, 255, 255, 0.13);
+    background-color: rgba(255, 255, 255, 0);
     color: #ffffff;
 }
 
@@ -1193,3 +1207,85 @@ QToolTip {
 .battery-widget .icon.status-high { color: #a8e063; }
 .battery-widget .icon.status-full { color: #ffffff; }
 .battery-widget .icon.status-charging { color: #30d158; }
+
+/* ==========================================================
+   KETHERBAR — ACTIVE WINDOW + APPS
+   Matching typography, alignment and continuous appearance
+   ========================================================== */
+
+/* Keep both widgets visually integrated with the bar */
+.active-window-widget,
+.apps-widget {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+}
+
+/* Remove separate backgrounds from the inner containers */
+.active-window-widget .widget-container,
+.apps-widget .widget-container {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Match the active title to the application labels */
+.active-window-widget .label,
+.apps-widget .label {
+    color: #ffffff;
+    font-family: "SF Pro Rounded", "JetBrainsMono NFP", sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    background-color: transparent;
+    padding: 0 2px 1px;
+    margin: 0 8px;
+}
+
+/* Apps keep their existing individual hover treatment */
+.apps-widget .label:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 9px;
+}
+
+/* Prevent a separate outer hover block around either widget */
+.active-window-widget:hover,
+.apps-widget:hover,
+.active-window-widget .widget-container:hover,
+.apps-widget .widget-container:hover {
+    background-color: transparent;
+}
+
+/* Keep the active title legible */
+.active-window-widget .label {
+    color: #ffffff;
+    min-width: 0;
+}
+
+/* Active Window — match Apps hover appearance */
+.active-window-widget .label {
+    color: #ffffff;
+    background-color: transparent;
+    border-radius: 9px;
+    padding: 1px 9px 2px;
+    margin: 0 3px;
+}
+
+.active-window-widget .label:hover {
+    background-color: rgba(255, 255, 255, 0);
+    color: #ffffff;
+    border-radius: 9px;
+}
+
+/* Keep the widget container itself transparent */
+.active-window-widget,
+.active-window-widget .widget-container,
+.active-window-widget:hover,
+.active-window-widget .widget-container:hover {
+    background-color: transparent;
+    border: none;
+}

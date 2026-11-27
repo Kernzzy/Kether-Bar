@@ -1,208 +1,98 @@
 <div align="center">
 
-#  KetherBar
+# KETHERBAR
 
-### A premium glass YASB theme inspired by macOS, crafted for a clean Windows experience.
+**A glass status bar for Windows 11, inspired by macOS Sonoma.**
 
-![GitHub stars](https://img.shields.io/github/stars/CrazzyTude/Kether-Bar?style=for-the-badge)
-![GitHub License](https://img.shields.io/github/license/CrazzyTude/Kether-Bar?style=for-the-badge)
-![GitHub Downloads](https://img.shields.io/github/downloads/CrazzyTude/Kether-Bar/total?style=for-the-badge)
+Minimal. Translucent. Native.
+
+<br>
+
+![Stars](https://img.shields.io/github/stars/Kernzzy/Kether-Bar?style=flat-square&color=white&labelColor=1c1c1e)
+![Platform](https://img.shields.io/badge/Windows_11-YASB-white?style=flat-square&labelColor=1c1c1e)
+
+<br>
+
+<img width="1917" height="32" alt="KetherBar" src="https://github.com/user-attachments/assets/9372e298-c85a-4277-8828-d283b089db92" />
+
+<br>
+
+[Features](#features) · [Install](#install) · [Configure](#configure) · [Gallery](#gallery)
 
 </div>
 
 ---
 
-## ✨ Preview
+## Features
 
-
-<img width="1917" height="32" alt="image" src="https://github.com/user-attachments/assets/9372e298-c85a-4277-8828-d283b089db92" />
-
-<!-- Add screenshots here -->
-
-
-
----
-
-# Features
-
-- 🍎 macOS Sonoma inspired design
-- 🪟 Designed specifically for Windows 11
-- 🌫️ Premium glass UI
-- 🎨 SF Pro Rounded typography
-- 📱 Modern Fluent iconography
-- 🎵 Beautiful media controls
-- 🌤️ Weather integration
-- 🔋 Modern battery widget
-- 📶 Wi-Fi & Bluetooth widgets
-- 🎙️ Microphone controls
-- 📅 Elegant calendar popup
-- ⚡ Optimized for YASB
-- 🎯 Clean and minimal layout
+- **Glass material.** Blurred, translucent bar and popups that share one consistent look.
+- **Sonoma typography.** SF Pro Rounded throughout, with Fluent and Nerd Font icons.
+- **Compact media control.** One button on the bar; the full player lives in a popup.
+- **Quick Launch.** Search apps, files and the web with `Alt + Space`.
+- **Everyday widgets.** Home menu, app launcher, system tray, weather, battery, Wi-Fi, Bluetooth, microphone and clock with calendar.
 
 ---
 
-# Requirements
+## Requirements
 
-- Windows 11 (23H2 / 24H2 Recommended)
-- Latest YASB
-- SF Pro Rounded font
-- JetBrainsMono Nerd Font (`JetBrainsMono NFP`), needed for the Wi-Fi, Bluetooth, battery and weather icons
-- Segoe Fluent Icons (included with Windows 11)
-- A free [WeatherAPI](https://www.weatherapi.com/) key for the weather widget
-- Optional: VS Code (`code` on PATH), Windows Terminal (`wt`) for the app launcher buttons
-
----
-
-# Installation
-
-## 1. Install YASB
-
-Follow the official installation guide:
-
-https://yasb.dev
+| | |
+|---|---|
+| OS | Windows 11 |
+| Bar | Latest [YASB](https://yasb.dev) |
+| Fonts | SF Pro Rounded and JetBrainsMono Nerd Font (`JetBrainsMono NFP`) |
+| Icons | Segoe Fluent Icons (included with Windows 11) |
+| Weather | A free [WeatherAPI](https://www.weatherapi.com/) key |
 
 ---
 
-## 2. Install SF Pro Rounded
+## Install
 
-Download and install the SF Pro Rounded font.
-
-Restart YASB afterwards.
-
----
-
-## 3. Copy the configuration
-
-Replace your existing
-
-```
-config.yaml
-styles.css
-```
-
-with the files from this repository.
+1. Install YASB and the fonts above.
+2. Replace your YASB `config.yaml` and `styles.css` with the files from this repository.
+3. Personalize the config (see below).
+4. Restart YASB from the tray icon.
 
 ---
 
-## 4. Personalize `config.yaml`
+## Configure
 
-Open `config.yaml` and change these lines before restarting:
+Open `config.yaml` and set these before restarting:
 
-| Setting | Where | What to do |
-|---------|-------|------------|
-| `api_key` | `widgets.weather` | Paste your free WeatherAPI key |
-| `location` | `widgets.weather` | Set your own location, e.g. `USA Los Angeles 90006` or just a city |
-| Browser button | `widgets.apps` | Replace the Zen Browser path with your browser's `.exe` path |
-| App buttons | `widgets.apps` | Edit or remove File / Code / Terminal / Notepad as you like |
-| Komorebi | top of file | Only used if you run komorebi, otherwise ignored |
+| Setting | Section | Action |
+|---|---|---|
+| `api_key` | `widgets.weather` | Paste your WeatherAPI key |
+| `location` | `widgets.weather` | Set your location, e.g. `USA Los Angeles 90006` or just a city |
+| Browser button | `widgets.apps` | Point it to your browser's `.exe` |
+| App buttons | `widgets.apps` | Edit or remove File, Code, Terminal and Notepad |
 
-Without a key and location the weather widget will not load. Everything else works out of the box.
-
----
-
-## 5. Restart YASB
-
-Either
-
-- Reload from the tray icon
-
-or
-
-- Restart the application.
+Without a key and location the weather widget stays empty. Everything else works out of the box. Komorebi settings at the top of the file are ignored unless you use komorebi.
 
 ---
 
-# Customization
+## Gallery
 
-Every widget can be customized.
+**Media**
 
-Examples include:
+<img width="530" height="247" alt="Media popup" src="https://github.com/user-attachments/assets/0879d363-ceb7-4caf-add2-d15e00d8b84a" />
 
-- Colors
-- Blur
-- Typography
-- Icon packs
-- Popup radius
-- Hover effects
-- Widget spacing
+**Quick Launch**
 
----
+<img width="932" height="565" alt="Quick Launch popup" src="https://github.com/user-attachments/assets/9fdbdf4a-b974-4772-8068-0a88941d5237" />
 
-# Widgets
+**Home**
 
-- Home
-- Apps
-- System Tray
-- Weather
-- Battery
-- Bluetooth
-- Wi-Fi
-- Clock
-- Media
-- Microphone
-- Quick Launch (ALT+SPACE)
+<img width="547" height="660" alt="Home popup" src="https://github.com/user-attachments/assets/ab747076-b447-435c-afcd-9a0d5e0f8d60" />
 
----
+**Calendar**
 
-# Roadmap
-
-- [ ] Sonoma Media Popup
-- [ ] Dynamic Accent Colors
-- [ ] Better Calendar
-- [ ] Control Center Style Popups
-- [ ] Auto Location Weather
-- [ ] Music Player Improvements
-- [ ] More Themes
-- [ ] OLED Mode
-
----
-
-# Screenshots
-
-| Desktop | Media Popup | Quick Launch Popup | Home Popup | Calendar Popup |
-|---------|-------------|--------------------|------------|----------------|
-
-
-<img width="1917" height="32" alt="image" src="https://github.com/user-attachments/assets/9372e298-c85a-4277-8828-d283b089db92" />
-<img width="530" height="247" alt="image" src="https://github.com/user-attachments/assets/0879d363-ceb7-4caf-add2-d15e00d8b84a" />
-<img width="932" height="565" alt="image" src="https://github.com/user-attachments/assets/9fdbdf4a-b974-4772-8068-0a88941d5237" />
-<img width="547" height="660" alt="image" src="https://github.com/user-attachments/assets/ab747076-b447-435c-afcd-9a0d5e0f8d60" />
-<img width="655" height="237" alt="image" src="https://github.com/user-attachments/assets/8a6a0deb-5323-4900-b148-21d377b59bbe" />
-
----
-
-# Credits
-
-Huge thanks to
-
-- YASB
-- Microsoft Fluent Icons
-- Apple (Design Inspiration)
-
----
-
-# Contributing
-
-Pull requests, feature requests and issues are always welcome.
-
-If you have ideas for improving KetherBar, feel free to open an issue or submit a PR.
-
----
-
-# Support
-
-If you enjoy KetherBar, consider giving the repository a ⭐.
-
-It helps others discover the project.
+<img width="655" height="237" alt="Calendar popup" src="https://github.com/user-attachments/assets/8a6a0deb-5323-4900-b148-21d377b59bbe" />
 
 ---
 
 <div align="center">
 
-### Crafted with ❤️ for the Windows customization community.
+Designed & built by **Kenzzy**
 
-**KetherBar**
-
-Elegant • Minimal • Native
+Built on [YASB](https://yasb.dev) · Microsoft Fluent Icons · Design inspired by Apple
 
 </div>

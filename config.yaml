@@ -33,7 +33,7 @@ bars:
       left:
         [
           "home",
-          #"active_window",
+          "active_window",
           "apps"
         ]
       center: [

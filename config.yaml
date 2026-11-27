@@ -278,8 +278,6 @@ widgets:
         - { title: "Download", path: "~\\Downloads" }
         - { title: "Documents", path: "~\\Documents" }
         - { title: "Pictures", path: "~\\Pictures" }
-        - { title: "Kernel (C)", path: "C:\\" }
-        - { title: "Kioku (D)", path: "D:\\" }
       system_menu: true
       power_menu: true
       blur: true

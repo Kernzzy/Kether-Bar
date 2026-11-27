@@ -1,6 +1,6 @@
 <div align="center">
 
-# KETHERBAR
+# KETHER BAR
 
 **A glass status bar for Windows 11, inspired by macOS Sonoma.**
 

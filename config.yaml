@@ -170,7 +170,7 @@ widgets:
       tooltip: false
       label: "<span>{icon}</span> {temp}"
       label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
-      api_key: 'f60da6fb103441f094891203260111' # Free key from https://www.weatherapi.com/
+      api_key: 'YOUR_WEATHERAPI_KEY' # Free key from https://www.weatherapi.com/
       update_interval: 600 # Seconds, minimum 600
       hide_decimal: true
       location: 'India Ghaziabad 201013' # Format: "COUNTRY CITY ZIP_CODE", or just a city
@@ -273,7 +273,7 @@ widgets:
     options:
       label: "\ue8e5"
       menu_list:
-        - { title: "Control Panel", path: "C:\\Users\\crazz\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\System Tools\\Control Panel.lnk" }
+        - { title: "Control Panel", path: "~\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\System Tools\\Control Panel.lnk" }
         - { title: "User Home", path: "~" }
         - { title: "Download", path: "~\\Downloads" }
         - { title: "Documents", path: "~\\Documents" }

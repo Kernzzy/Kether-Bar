@@ -170,10 +170,10 @@ widgets:
       tooltip: false
       label: "<span>{icon}</span> {temp}"
       label_alt: "{location}: Min {min_temp}, Max {max_temp}, Humidity {humidity}"
-      api_key: 'YOUR_WEATHERAPI_KEY' # Free key from https://www.weatherapi.com/
+      api_key: 'YOUR_WEATHERAPI_KEY' # REQUIRED: paste your free key from https://www.weatherapi.com/
       update_interval: 600 # Seconds, minimum 600
       hide_decimal: true
-      location: 'India Ghaziabad 201013' # Format: "COUNTRY CITY ZIP_CODE", or just a city
+      location: 'YOUR_CITY' # REQUIRED: set your location, e.g. "USA Los Angeles 90006" (COUNTRY CITY ZIP_CODE) or just a city
       icons:
         sunnyDay: "\ue30d"
         clearNight: "\ue32b"
@@ -292,7 +292,7 @@ widgets:
         - {icon: "Code", launch: "code"}
         - {icon: "Terminal", launch: "wt"}
         - {icon: "Notepad", launch: "notepad"}
-        - {icon: "Browser", launch: "C:\\Program Files\\Zen Browser\\zen.exe"}
+        - {icon: "Browser", launch: "C:\\Program Files\\Zen Browser\\zen.exe"} # Change to your browser's .exe path (or e.g. "msedge", "chrome")
   battery:
     type: "yasb.battery.BatteryWidget"
     options:

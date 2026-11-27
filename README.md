@@ -45,8 +45,11 @@
 
 - Windows 11 (23H2 / 24H2 Recommended)
 - Latest YASB
-- SF Pro Rounded Font
-- Nerd Font
+- SF Pro Rounded font
+- JetBrainsMono Nerd Font (`JetBrainsMono NFP`), needed for the Wi-Fi, Bluetooth, battery and weather icons
+- Segoe Fluent Icons (included with Windows 11)
+- A free [WeatherAPI](https://www.weatherapi.com/) key for the weather widget
+- Optional: VS Code (`code` on PATH), Windows Terminal (`wt`) for the app launcher buttons
 
 ---
 
@@ -81,7 +84,23 @@ with the files from this repository.
 
 ---
 
-## 4. Restart YASB
+## 4. Personalize `config.yaml`
+
+Open `config.yaml` and change these lines before restarting:
+
+| Setting | Where | What to do |
+|---------|-------|------------|
+| `api_key` | `widgets.weather` | Paste your free WeatherAPI key |
+| `location` | `widgets.weather` | Set your own location, e.g. `USA Los Angeles 90006` or just a city |
+| Browser button | `widgets.apps` | Replace the Zen Browser path with your browser's `.exe` path |
+| App buttons | `widgets.apps` | Edit or remove File / Code / Terminal / Notepad as you like |
+| Komorebi | top of file | Only used if you run komorebi, otherwise ignored |
+
+Without a key and location the weather widget will not load. Everything else works out of the box.
+
+---
+
+## 5. Restart YASB
 
 Either
 
